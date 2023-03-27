@@ -61,7 +61,7 @@
 
   const getNameOfCurrentDevice = () => {
     const device = require("tns-core-modules/platform").device;
-    return device.model;;
+    return device.model;
   };
 </script>
 
@@ -81,7 +81,13 @@
           editable="true"
           on:returnPress={onButtonTap}
         />
-        <button col="1" row="0" text="Add task" on:tap={onButtonTap} />
+        <button
+          col="1"
+          row="0"
+          text="Add task"
+          on:tap={onButtonTap}
+          class="-primary"
+        />
 
         <listView items={todos} on:itemTap={onItemTap} row="1" colSpan="2">
           <Template let:item>
@@ -93,7 +99,7 @@
     <tabViewItem title="Completed" class="tab">
       <listView items={dones} on:itemTap={onDoneTap}>
         <Template let:item>
-          <label text={item.name} textWrap="true" />
+          <label text={item.name} class="todo-item-completed" textWrap="true" />
         </Template>
       </listView>
     </tabViewItem>
@@ -101,5 +107,12 @@
 </page>
 
 <style>
+  textField {
+    font-size: 20;
+  }
 
+  .todo-item-completed {
+    color: #939393;
+    text-decoration: line-through;
+  }
 </style>
